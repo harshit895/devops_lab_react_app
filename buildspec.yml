@@ -1,15 +1,15 @@
 version: 0.2
-# env:
-#   parameter-store:
-#     DOCKERHUB_USERNAME: "DOCKERHUB_USERNAME"
-#     DOCKERHUB_PASSWORD: "DOCKERHUB_PASSWORD"
+ env:
+   parameter-store:
+     DOCKERHUB_USERNAME: "DOCKERHUB_USERNAME"
+     DOCKERHUB_PASSWORD: "DOCKERHUB_PASSWORD"
 phases:
   pre_build:
     commands:
-      # - echo Docker Login...
-      # - echo $DOCKERHUB_PASSWORD | docker login --username $DOCKERHUB_USERNAME --password-stdin
-      # - pip install awscli --upgrade --user
-      # - echo `aws --version`
+      - echo Docker Login...
+      - echo $DOCKERHUB_PASSWORD | docker login --username $DOCKERHUB_USERNAME --password-stdin
+      - pip install awscli --upgrade --user
+      - echo `aws --version`
       - echo Logging in to Amazon ECR...
       - $(aws ecr get-login --region ${region} --no-include-email)
       - REPOSITORY_URI=${repository_url}
