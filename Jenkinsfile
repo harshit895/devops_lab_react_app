@@ -8,9 +8,11 @@ node() {
                 checkout scm
     
         stage 'Compare with Prev'
-                if commitHash == commitSuccessHash
-                exit 0
-    
+                if (commitHash == commitSuccessHash) {
+                      currentBuild.result = 'ABORTED'
+                      error('Stopping early…')
+                }
+                    
         stage 'Data Transfer'
                 sh 'aws s3 sync . s3://test-bucket-stpl/test --exclude "*" --include "*.sh"'
         
