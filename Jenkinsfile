@@ -10,7 +10,7 @@ node() {
         
         stage 'Print Commit ID'
                 withCheckout(scm) {
-                    echo "GIT_COMMIT is ${env.GIT_COMMIT}"
+                    echo "GIT_COMMIT is ${GIT_COMMIT}"
                   }
         }
   catch(err) {
