@@ -10,7 +10,7 @@ node() {
         stage 'Compare with Prev'
                 if (commitHash == commitSuccessHash) {
                       currentBuild.result = 'ABORTED'
-                      error('Stopping early…')
+                      error('Stopping Since No Changes…')
                 }
                     
         stage 'Data Transfer'
