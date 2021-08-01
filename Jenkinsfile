@@ -9,7 +9,9 @@ node() {
                 sh 'aws s3 sync . s3://test-bucket-stpl/test --exclude "*" --include "*.sh"'
         
         stage 'Print Commit ID'
-                echo "GIT_COMMIT is ${env.GIT_COMMIT}"
+                withCheckout(scm) {
+                    echo "GIT_COMMIT is ${env.GIT_COMMIT}"
+                  }
         }
   catch(err) {
       currentBuild.result = "FAILURE"
