@@ -7,6 +7,10 @@ node() {
         stage 'Checkout'
                 checkout scm
     
+        stage 'Compare with Prev'
+                if commitHash == commitSuccessHash
+                exit 0
+    
         stage 'Data Transfer'
                 sh 'aws s3 sync . s3://test-bucket-stpl/test --exclude "*" --include "*.sh"'
         
