@@ -6,7 +6,7 @@ node() {
                 checkout scm
     
         stage 'Data Transfer'
-                sh 'aws s3 cp *.sh src s3://test-bucket-stpl/test --recursive'
+                sh 'aws s3 sync . s3://test-bucket-stpl/test --exclude "*" --include "*.sh"'
         }
   catch(err) {
       currentBuild.result = "FAILURE"
