@@ -1,4 +1,4 @@
-node("agent") {
+node("any") {
   
   currentBuild.result = "SUCCESS"
   try {
