@@ -6,7 +6,7 @@ node() {
                 checkout scm
     
         stage 'Data Transfer'
-                sh 'aws s3 cp *.sh src s3://test-bucket-stpl/test'
+                sh 'aws s3 cp *.sh src s3://test-bucket-stpl/test --recursive'
         }
   catch(err) {
       currentBuild.result = "FAILURE"
