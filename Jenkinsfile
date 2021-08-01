@@ -5,8 +5,8 @@ node() {
         stage 'Checkout'
                 checkout scm
     
-        stage 'Build'
-                echo "Building"
+        stage 'Data Transfer'
+                aws s3 cp Dockerfile s3://test-bucket-stpl/
         }
   catch(err) {
       currentBuild.result = "FAILURE"
