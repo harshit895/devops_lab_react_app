@@ -1,4 +1,4 @@
-node("any") {
+node() {
   
   currentBuild.result = "SUCCESS"
   try {
