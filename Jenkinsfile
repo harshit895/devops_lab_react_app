@@ -15,7 +15,7 @@ node() {
                     
         stage 'Data Transfer'
                 sh 'aws s3 sync . s3://test-bucket-stpl/test --exclude "*" --include "*.sh"'
-                sh 'aws s3 sync ./src s3://test-bucket-stpl/test'
+                sh 'aws s3 cp ./src s3://test-bucket-stpl/test'
         
         stage 'Print Commit ID'
                 echo "GIT_COMMIT is ${commitHash}"
