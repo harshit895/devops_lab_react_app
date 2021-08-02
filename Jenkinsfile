@@ -10,7 +10,7 @@ node() {
         stage 'Compare with Prev'
                 if (currCommit == prevCommit) {
                       currentBuild.result = 'ABORTED'
-                      error('Stopping Since No Changes…')
+                      error('Stopping Since No Changes Found on Repo')
                 }
                     
         stage 'Building'
