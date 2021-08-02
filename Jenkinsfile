@@ -17,7 +17,7 @@ node() {
                 echo "Building"
         
         stage 'Print Commit ID'
-                echo "GIT_COMMIT is ${currCommit}"
+                echo "CURRENT COMMIT is ${currCommit}"
          
         stage 'Print Prev Commit ID'
                 echo "PREVIOUS COMMIT is ${prevCommit}"
