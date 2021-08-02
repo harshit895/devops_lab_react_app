@@ -1,27 +1,26 @@
 node() {
   
-  def commitHash = checkout(scm).GIT_COMMIT
-  def commitSuccessHash = checkout(scm).GIT_PREVIOUS_SUCCESSFUL_COMMIT
+  def currCommit = checkout(scm).GIT_COMMIT
+  def prevCommit = checkout(scm).GIT_PREVIOUS_SUCCESSFUL_COMMIT
   currentBuild.result = "SUCCESS"
   try {
         stage 'Checkout'
                 checkout scm
     
         stage 'Compare with Prev'
-                if (commitHash == commitSuccessHash) {
+                if (currCommit == prevCommit) {
                       currentBuild.result = 'ABORTED'
                       error('Stopping Since No Changes…')
                 }
                     
-        stage 'Data Transfer'
-                sh 'aws s3 sync . s3://test-bucket-stpl/test --exclude "*" --include "*.sh"'
-                sh 'aws s3 cp ./src s3://test-bucket-stpl/test/src --recursive'
+        stage 'Building'
+                echo "Building"
         
         stage 'Print Commit ID'
-                echo "GIT_COMMIT is ${commitHash}"
+                echo "GIT_COMMIT is ${currCommit}"
          
         stage 'Print Prev Commit ID'
-                echo "PREVIOUS COMMIT is ${commitSuccessHash}"
+                echo "PREVIOUS COMMIT is ${prevCommit}"
   }
   catch(err) {
       currentBuild.result = "FAILURE"
