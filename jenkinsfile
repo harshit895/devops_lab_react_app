@@ -1,5 +1,5 @@
 node() {
-  parameters {
+parameters {
         string(name: 'SCRIPT_PATH', defaultValue: '', description: 'Enter the complete script path in the repo. Eg. sh/f.sh')
         string(name: 'SCHEMA_NAME', defaultValue: '', description: 'Enter the schema name. Eg. MDN SCHEMA')
         string(name: 'CRON_EXPRESSION', defaultValue: '', description: 'Enter the time at which to run. Eg. everyday 8:30')
