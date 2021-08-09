@@ -12,6 +12,7 @@ parameters {
     
         stage 'Running Script'
                 sh '''
+                      echo ${WORKSPACE}
                       chmod +x ${SCRIPT_PATH}
                       ${params.SCRIPT_PATH} ${params.SCHEMA_NAME} ${params.CRON_EXPRESSION}
                    '''
