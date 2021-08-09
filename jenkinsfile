@@ -14,7 +14,7 @@ parameters {
                 sh '''
                       echo ${WORKSPACE}
                       chmod +x ${WORKSPACE}/${SCRIPT_PATH}
-                      ${WORKSPACE}/${params.SCRIPT_PATH} ${params.SCHEMA_NAME} ${params.CRON_EXPRESSION}
+                      ${WORKSPACE}/${SCRIPT_PATH} ${SCHEMA_NAME} ${CRON_EXPRESSION}
                    '''
                     
   }
