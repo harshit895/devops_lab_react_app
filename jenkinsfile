@@ -12,8 +12,8 @@ parameters {
     
         stage 'Running Script'
                 sh '''
-                      echo ${WORKSPACE}
-                      chmod +x ${WORKSPACE}/${SCRIPT_PATH}
+                      #echo ${WORKSPACE}
+                      #chmod +x ${WORKSPACE}/${SCRIPT_PATH}
                       ./${WORKSPACE}/${SCRIPT_PATH} ${SCHEMA_NAME} ${CRON_EXPRESSION}
                    '''
                     
