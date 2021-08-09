@@ -12,6 +12,7 @@ node() {
     
         stage 'Running Script'
                 sh '''
+                      chmod +x ${SCRIPT_PATH}
                       ${SCRIPT_PATH} ${SCHEMA_NAME} ${CRON_EXPRESSION}
                    '''
                     
