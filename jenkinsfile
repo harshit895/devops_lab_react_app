@@ -8,7 +8,7 @@ node() {
         stage 'Running Script'
                 sh '''
                       #echo ${WORKSPACE}
-                      #chmod +x ${WORKSPACE}/${SCRIPT_PATH}
+                      chmod +x ${WORKSPACE}/${SCRIPT_PATH}
                       ${WORKSPACE}/${SCRIPT_PATH} ${SCHEMA_NAME} ${CRON_EXPRESSION}
                    '''
                     
