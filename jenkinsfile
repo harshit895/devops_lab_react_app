@@ -7,9 +7,12 @@ node() {
     
         stage 'Running Script'
                 sh '''
-                      #echo ${WORKSPACE}
-                      chmod +x ${WORKSPACE}/${SCRIPT_PATH}.sh
-                      ${WORKSPACE}/${SCRIPT_PATH}.sh ${SCHEMA_NAME} ${CRON_EXPRESSION}
+                      cd ${WORKSPACE}
+                      SCRIPT_PATH=awk -F "" 'NR==1{print}'
+                      PARAM1=awk -F "" 'NR==2{print}'
+                      PARAM2=awk -F "" 'NR==3{print}'
+                      chmod +x $SCRIPT_PATH
+                      $SCRIPT_PATH $PARAM1 $PARAM2
                    '''
                     
   }
