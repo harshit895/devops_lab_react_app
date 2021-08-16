@@ -8,9 +8,9 @@ node() {
         stage 'Running Script'
                 sh '''
                       cd ${WORKSPACE}
-                      SCRIPT_PATH=awk -F "" 'NR==1{print}'
-                      PARAM1=awk -F "" 'NR==2{print}'
-                      PARAM2=awk -F "" 'NR==3{print}'
+                      SCRIPT_PATH=awk -F "" 'NR==1{print}' params.txt
+                      PARAM1=awk -F "" 'NR==2{print}' params.txt
+                      PARAM2=awk -F "" 'NR==3{print}' params.txt
                       chmod +x $SCRIPT_PATH
                       $SCRIPT_PATH $PARAM1 $PARAM2
                    '''
