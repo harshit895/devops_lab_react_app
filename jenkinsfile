@@ -7,7 +7,7 @@ node() {
     
         stage 'Running Script'
                 sh '''
-                      cd ${WORKSPACE}
+                      #cd ${WORKSPACE}
                       SCRIPT_PATH=sed -n 1p sh/params.txt
                       PARAM1=sed -n 2p sh/params.txt
                       PARAM2=sed -n 3p sh/params.txt
