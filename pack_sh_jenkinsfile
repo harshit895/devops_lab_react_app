@@ -10,7 +10,7 @@ node() {
                       cd ${WORKSPACE}
                       find . | egrep ".(sh)$" | zip -@ abc-${BUILD_NUMBER}.zip
                       find -type d -name "src" | zip -@ abcdep-${BUILD_NUMBER}.zip
-                      aws s3 cp abc*.zip s3://test-bucket-stpl
+                      aws s3 cp abc*.zip s3://test-bucket-stpl/
                    '''
                     
   }
