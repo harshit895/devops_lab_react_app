@@ -1,0 +1,21 @@
+node() {
+
+  currentBuild.result = "SUCCESS"
+  try {
+        stage 'Checkout'
+                checkout scm
+    
+        stage 'Running Script'
+                sh '''
+                      cd ${WORKSPACE}
+                      find . | egrep ".(sh)$" | zip -@ abc-${BUILD_NUMBER}.zip
+                      find -type d -name "src" | zip -@ abcdep-${BUILD_NUMBER}.zip
+                      aws s3 cp abc*.zip s3://test-bucket-stpl
+                   '''
+                    
+  }
+  catch(err) {
+      currentBuild.result = "FAILURE"
+      throw err
+  }
+}
