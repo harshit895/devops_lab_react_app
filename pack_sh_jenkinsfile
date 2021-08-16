@@ -8,9 +8,8 @@ node() {
         stage 'Running Script'
                 sh '''
                       cd ${WORKSPACE}
-                      find . | egrep ".(sh)$" | zip -@ abc-${BUILD_NUMBER}.zip
-                      find -type d -name "src" | zip -@ abcdep-${BUILD_NUMBER}.zip
-                      aws s3 cp abc-${BUILD_NUMBER}.zip s3://test-bucket-stpl/
+                      find . -type d -name "src" -print0 -o -name "*.sh" -print0 | tar -cvzf abc-${BUILD_NUMBER}.tar.gz --null -T -
+                      aws s3 cp abc-${BUILD_NUMBER}.tar.gz s3://test-bucket-stpl/
                    '''
                     
   }
