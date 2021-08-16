@@ -9,8 +9,8 @@ node() {
                 sh '''
                       cd ${WORKSPACE}
                       SCRIPT_PATH=sed -n 1p sh/params.txt
-                      PARAM1="awk -F "" NR==2{print} sh/params.txt"
-                      PARAM2="awk -F "" NR==3{print} sh/params.txt"
+                      PARAM1=sed -n 2p sh/params.txt
+                      PARAM2=sed -n 3p sh/params.txt
                       chmod +x $SCRIPT_PATH
                       $SCRIPT_PATH $PARAM1 $PARAM2
                    '''
