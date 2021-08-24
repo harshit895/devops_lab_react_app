@@ -8,11 +8,11 @@ node() {
         stage 'Running Script'
                 sh '''
                       cd ${WORKSPACE}
-                      SCRIPT_PATH=$(cat params.txt | awk ' BEGIN { first = 1; last = 1 }
+                      SCRIPT_PATH=$(cat sh/params.txt | awk ' BEGIN { first = 1; last = 1 }
                                     { for (i = first; i < last; i++) { printf("%s ", $i) } print $last }')
-                      PARAM1=$(cat params.txt | awk ' BEGIN { first = 2; last = 2 }
+                      PARAM1=$(cat sh/params.txt | awk ' BEGIN { first = 2; last = 2 }
                                     { for (i = first; i < last; i++) { printf("%s ", $i) } print $last }')
-                      PARAM2=$(cat params.txt | awk ' BEGIN { first = 3; last = 5 }
+                      PARAM2=$(cat sh/params.txt | awk ' BEGIN { first = 3; last = 5 }
                                     { for (i = first; i < last; i++) { printf("%s ", $i) } print $last }')
                       #chmod +x $SCRIPT_PATH
                       echo "$SCRIPT_PATH $PARAM1 $PARAM2"
