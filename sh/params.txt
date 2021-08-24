@@ -1,2 +1,2 @@
-sh/e.sh MDM 'every day 8:30'
+sh/e.sh
 sh/f.sh ISDS 'every night 10:10'
