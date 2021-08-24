@@ -8,6 +8,7 @@ node() {
         stage 'Running Script'
                 sh '''
                       cd ${WORKSPACE}
+                      chmod +x sh/*.sh
                       input="sh/params.txt"
                       while IFS= read -r line
                       do
