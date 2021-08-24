@@ -15,7 +15,10 @@ node() {
                       PARAM2=$(cat sh/params.txt | awk ' BEGIN { first = 3; last = 5 }
                                     { for (i = first; i < last; i++) { printf("%s ", $i) } print $last }')
                       #chmod +x $SCRIPT_PATH
-                      echo "$SCRIPT_PATH $PARAM1 $PARAM2"
+                      #echo "$SCRIPT_PATH $PARAM1 $PARAM2"
+                      for val in $SCRIPT_PATH; do
+                          echo $val
+                      done
                    '''
                     
   }
