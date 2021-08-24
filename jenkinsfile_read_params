@@ -8,17 +8,23 @@ node() {
         stage 'Running Script'
                 sh '''
                       cd ${WORKSPACE}
-                      SCRIPT_PATH=$(cat sh/params.txt | awk ' BEGIN { first = 1; last = 1 }
-                                    { for (i = first; i < last; i++) { printf("%s ", $i) } print $last }')
-                      PARAM1=$(cat sh/params.txt | awk ' BEGIN { first = 2; last = 2 }
-                                    { for (i = first; i < last; i++) { printf("%s ", $i) } print $last }')
-                      PARAM2=$(cat sh/params.txt | awk ' BEGIN { first = 3; last = 5 }
-                                    { for (i = first; i < last; i++) { printf("%s ", $i) } print $last }')
+                      input="sh/params.txt"
+                      while IFS= read -r line
+                      do
+                        "$line"
+                      done < "$input"
+                      
+                      #SCRIPT_PATH=$(cat sh/params.txt | awk ' BEGIN { first = 1; last = 1 }
+                      #              { for (i = first; i < last; i++) { printf("%s ", $i) } print $last }')
+                      #PARAM1=$(cat sh/params.txt | awk ' BEGIN { first = 2; last = 2 }
+                      #              { for (i = first; i < last; i++) { printf("%s ", $i) } print $last }')
+                      #PARAM2=$(cat sh/params.txt | awk ' BEGIN { first = 3; last = 5 }
+                      #              { for (i = first; i < last; i++) { printf("%s ", $i) } print $last }')
                       #chmod +x $SCRIPT_PATH
                       #echo "$SCRIPT_PATH $PARAM1 $PARAM2"
-                      for val in $SCRIPT_PATH; do
-                          echo $val
-                      done
+                      #for val in $SCRIPT_PATH; do
+                      #    echo $val
+                      #done
                    '''
                     
   }
