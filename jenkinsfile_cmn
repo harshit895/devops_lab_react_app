@@ -1,0 +1,37 @@
+
+node() {
+
+  currentBuild.result = "SUCCESS"
+  try {
+        stage 'Checkout'
+                checkout scm
+    
+        stage 'Health Check'
+                sh '''
+                      state=$(curl https://ongdev.itradenetwork.net/common/api/actuator/health)
+
+                      json=($(echo $state | tr '"' '\n' | grep DOWN))
+                      echo $json 
+
+                      for i in ${json[@]}
+                      do
+                          if [ $i == "DOWN" ]
+                        then
+                          exit 1
+                        else
+                          echo "All services are UP !"
+                        fi
+                      done
+                   '''
+        
+        stage 'Deploy'
+                sh '''
+                    echo "Proceeded to Next Step"
+                   '''
+                    
+  }
+  catch(err) {
+      currentBuild.result = "FAILURE"
+      throw err
+  }
+}
