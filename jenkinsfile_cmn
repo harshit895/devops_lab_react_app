@@ -8,19 +8,9 @@ node() {
     
         stage 'Health Check'
                 sh '''
-                      state=$(curl https://ongdev.itradenetwork.net/common/api/actuator/health)
-
-                      json=($(echo $state | tr '"' '\n' | grep DOWN)) 
-
-                      for i in ${json[@]}
-                      do
-                          if [ $i == "DOWN" ]
-                        then
-                          exit 1
-                        else
-                          echo "All services are UP !"
-                        fi
-                      done
+                      cd ${WORKSPACE}
+                      chmod +x health.sh
+                      ./health.sh
                    '''
         
         stage 'Deploy'
