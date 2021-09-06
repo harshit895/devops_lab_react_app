@@ -10,8 +10,7 @@ node() {
                 sh '''
                       state=$(curl https://ongdev.itradenetwork.net/common/api/actuator/health)
 
-                      json=($(echo $state | tr '"' '\n' | grep DOWN))
-                      echo $json 
+                      json=($(echo $state | tr '"' '\n' | grep DOWN)) 
 
                       for i in ${json[@]}
                       do
