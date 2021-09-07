@@ -8,6 +8,7 @@ node() {
     
         stage 'Health Check'
                 sh '''#!/bin/bash
+                    sleep 30
                     state=$(curl https://ongdev.itradenetwork.net/common/api/actuator/health)
                     json=($(echo $state | tr '"' '\n' | grep DOWN))
                     for i in ${json[@]}
