@@ -1,12 +1,13 @@
 node() {
  
   currentBuild.result = "SUCCESS"
+  def APP_URL='https://google.com'
   try {
         stage 'Checkout'
                 checkout scm
     
         stage 'Trigger Branch Build'
-                build job: 'test2', parameters: [[$class: 'StringParameterValue', name: 'APP_URL', value: 'https://google.com']]
+                build job: 'test2', parameters: [[$class: 'StringParameterValue', name: 'APP_URL', value: APP_URL]]
 
  }
   catch(err) {
