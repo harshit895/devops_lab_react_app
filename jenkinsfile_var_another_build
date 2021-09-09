@@ -1,7 +1,8 @@
 node() {
-  def APP_URL='http://google.com'
+ 
   currentBuild.result = "SUCCESS"
   try {
+   def APP_URL='http://google.com'
         stage 'Checkout'
                 checkout scm
     
