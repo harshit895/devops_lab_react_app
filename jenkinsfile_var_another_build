@@ -7,7 +7,6 @@ node() {
                 checkout scm
     
         stage 'Health Check'
-                def APP_URL='http://google.com'
                 build 'test2'
                     
   }
