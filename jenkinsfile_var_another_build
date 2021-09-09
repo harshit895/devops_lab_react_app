@@ -6,10 +6,14 @@ node() {
                 checkout scm
     
         stage 'Health Check'
-                sh '''
-                 export APP_URL='http://google.com'
-                 build job: test2
-                 '''
+            steps {
+                parallel (
+                    linux: {
+                        build job: 'test2', parameters: [string(name: 'APP_URL', value: 'https://google.com')]
+                    }
+                    failFast: false)
+            }
+        }
                     
   }
   catch(err) {
