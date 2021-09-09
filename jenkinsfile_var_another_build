@@ -2,12 +2,13 @@ node() {
  
   currentBuild.result = "SUCCESS"
   try {
-   def APP_URL='http://google.com'
         stage 'Checkout'
                 checkout scm
     
         stage 'Health Check'
-                build 'test2'
+                sh '''
+                 export APP_URL='http://google.com'
+                 build job: test2
                     
   }
   catch(err) {
