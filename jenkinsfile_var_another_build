@@ -1,7 +1,5 @@
-def APP_URL='http://google.com'
-
 node() {
-
+  def APP_URL='http://google.com'
   currentBuild.result = "SUCCESS"
   try {
         stage 'Checkout'
