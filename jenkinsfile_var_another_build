@@ -11,7 +11,6 @@ node() {
                     linux: {
                         build job: 'test2', parameters: [string(name: 'APP_URL', value: 'https://google.com')]
                     }
-                    failFast: false)
             }
         }
                     
