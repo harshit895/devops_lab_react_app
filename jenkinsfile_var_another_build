@@ -9,6 +9,7 @@ node() {
                 sh '''
                  export APP_URL='http://google.com'
                  build job: test2
+                 '''
                     
   }
   catch(err) {
