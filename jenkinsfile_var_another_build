@@ -6,7 +6,7 @@ node() {
                 checkout scm
     
         stage 'Trigger Branch Build'
-                build job: 'test2', parameters: [[$class: 'StringParameterValue', name: 'APP_URL', value: systemname]]
+                build job: 'test2', parameters: [[$class: 'StringParameterValue', name: 'APP_URL', value: 'https://google.com']]
 
  }
   catch(err) {
