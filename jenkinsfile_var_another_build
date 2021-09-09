@@ -5,16 +5,15 @@ node() {
         stage 'Checkout'
                 checkout scm
     
-        stage 'Health Check'
-            steps {
-                parallel (
-                    linux: {
-                        build job: 'test2', parameters: [string(name: 'APP_URL', value: 'https://google.com')]
-                    }
+    stage('Trigger Branch Build') {
+        steps {
+            script {                    
+                    build job: "test2", parameters: [string(name: 'APP_URL', value: 'https://google.com')]
             }
         }
+    }
                     
-  }
+ }
   catch(err) {
       currentBuild.result = "FAILURE"
       throw err
